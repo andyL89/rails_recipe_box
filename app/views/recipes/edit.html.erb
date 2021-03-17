@@ -1,7 +1,13 @@
 <h1>Edit Recipe!</h1>
 
-<%= form_for @recipe do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, required: "true" %>
-  <%= f.submit %>
-<% end %>
+<div class="form">
+  <%= form_for @recipe do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", required: "true" %>
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, class: "form-control", :rows=>10, :cols=>60 %>
+    <%= f.submit class: "btn" %>
+  <% end %>
+</div>
+
+<p><%= link_to "Return to Recipes", recipes_path %></p>

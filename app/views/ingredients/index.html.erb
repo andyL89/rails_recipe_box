@@ -1,0 +1,13 @@
+<h1>Stocked Ingredients</h1>
+
+<% if @ingredients.any? %>
+  <ul>
+    <% @ingredients.each do |ingredient| %>
+      <li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Sorry, there are no ingredients in the pantry.</p>
+<% end %>
+
+<p><%= link_to "Add an Ingredient", new_ingredient_path %></p>

@@ -10,12 +10,12 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @ingredient = Ingredient.new(ingredient_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.new(ingredient_params)
     if @ingredient.save
+      @ingredient.recipes << @recipe
       flash[:notice] = "Ingredient added!"
-      redirect_to ingredients_path
-    else
-      render :new
+      redirect_to recipe_path(@recipe)
     end
   end
 
