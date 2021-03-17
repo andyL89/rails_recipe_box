@@ -1,19 +1,16 @@
 $text-color: rgb(165, 49, 76);
 body {
-  background: linear-gradient( white, rgb(211, 153, 154)) fixed;
+  background: linear-gradient( white, rgb(211, 129, 130)) fixed;
   background-repeat:
   no-repeat;
 }
 
-p {
-  color: $text-color;
-}
-
 .form {
   padding: 20px;
-  background-color: rgba(211, 139, 156, 0.769);
+  background-color: rgba(255, 255, 255, 0.577);
   width: fit-content;
-  border: none;
+  border-style: double;
+  border-color: $text-color;
   border-radius: 11px;
   margin: 10px;
 }
@@ -31,12 +28,6 @@ p {
   }
 }
 
-.links {
-  font-weight: bold;
-  a {
-    color: $text-color;
-    &:hover {
-      color:rgb(198, 113, 133);
-    }
-  }
+.notice {
+  color: red;
 }

@@ -1,4 +1,4 @@
-<h1>Edit Recipe!</h1>
+<%= render "layouts/errors", :object => @recipe %>
 
 <div class="form">
   <%= form_for @recipe do |f| %>
@@ -6,10 +6,6 @@
     <%= f.text_field :title, class: "form-control", required: "true" %>
     <%= f.label :instructions %>
     <%= f.text_area :instructions, class: "form-control", :rows=>10, :cols=>60 %>
-    <%= f.label :rating %>
-    <%= f.text_field :rating, class: "form-control" %>
-    <%= f.submit class: "btn" %>
+    <%= f.submit class: "submit" %>
   <% end %>
 </div>
-
-<p><%= link_to "Return to Recipes", recipes_path %></p>

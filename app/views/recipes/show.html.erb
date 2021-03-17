@@ -1,6 +1,6 @@
 <h1><%= @recipe.title %></h1>
 
-<h4>Here are the ingredients for this recipe:</h4>
+<h4>Ingredients:</h4>
 <% if @recipe.ingredients.any? %>
   <% @recipe.ingredients.each do |ingredient| %>
     <ul>
@@ -9,6 +9,12 @@
   <% end %>
 <% else %>
   <p>No ingredients have been added to this recipe yet.</p>
+<% end %>
+<h4>Instructions:</h4>
+<% if @recipe %>
+  <p><%= @recipe.instructions %></p>
+<% else %>
+  <p>Instructions have yet to be added to this recipe.</p>
 <% end %>
 
 <h4>Add an Ingredient:</h4>
