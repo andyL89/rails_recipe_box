@@ -1,15 +1,5 @@
-<h1>Edit Recipe!</h1>
+<h1>Edit Recipe</h1>
 
-<div class="form">
-  <%= form_for @recipe do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control", required: "true" %>
-    <%= f.label :instructions %>
-    <%= f.text_area :instructions, class: "form-control", :rows=>10, :cols=>60 %>
-    <%= f.label :rating %>
-    <%= f.text_field :rating, class: "form-control" %>
-    <%= f.submit class: "btn" %>
-  <% end %>
-</div>
+<%= render "layouts/recipe_form" %>
 
 <p><%= link_to "Return to Recipes", recipes_path %></p>
