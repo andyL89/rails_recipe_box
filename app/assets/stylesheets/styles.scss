@@ -1,17 +1,33 @@
 $text-color: rgb(165, 49, 76);
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 body {
   background: linear-gradient( white, rgb(211, 129, 130)) fixed;
-  background-repeat:
-  no-repeat;
+  background-repeat: no-repeat;
+}
+
+.container {
+  font-family: 'Amatic SC', cursive;
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+  position: relative;
+}
+
+ul li:before {
+  content:"•"; font-size:10pt;
+  position: absolute;
+  left: 25px;
 }
 
 .form {
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.577);
+  background-color: rgba(255, 253, 246, 0.55);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: fit-content;
-  border-style: double;
-  border-color: $text-color;
-  border-radius: 11px;
+  border-style: none;
+  border-radius: 2px;
   margin: 10px;
 }
 
@@ -20,7 +36,9 @@ body {
   margin-bottom: 5px;
   background-color: white;
   border-radius: 5px;
-  border: none;
+  border-color: rgba(165, 49, 76, 0.324);
+  border-style: solid;
+  border-width: 1px;
   padding: 3px;
   &:hover {
       background-color: rgb(152, 37, 37);

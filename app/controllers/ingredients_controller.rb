@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.sort_by { |ingredient| ingredient[:name] }
     render :index
   end
 
