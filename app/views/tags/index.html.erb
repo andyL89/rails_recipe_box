@@ -1,0 +1,23 @@
+<h1>Stocked Tags</h1>
+
+<% if @tags.any? %>
+  <ul>
+    <% @tags.each do |tag| %>
+      <li><%= link_to tag.category, tag_path(tag) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Sorry, there are no tags in the pantry.</p>
+<% end %>
+<div class="form-container">
+  <h1>Add New Tags!</h1>
+  <div class="form">
+    <%= form_for @tag do |f| %>
+      <%= f.label "New Tag" %>
+      <%= f.text_field :category, class: "form-control", require: "true" %>
+      <%= f.submit class: "submit" %>
+    <% end %>
+  </div>
+</div>
+
+<p><%= link_to "Return to Recipes", recipes_path %></p>

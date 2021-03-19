@@ -1,0 +1,15 @@
+<div class="add-ingredient-container">
+  <h1>Add New Ingredients!</h1>
+  <div class="form">
+    <%= form_for @ingredient do |f| %>
+      <%= f.label "New Ingredient" %>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= f.submit class: "submit" %>
+    <% end %>
+  </div>
+  <p><%= link_to "Return to Recipes", recipes_path %></p>
+</div>
+
+<div class="ingredient-error">
+  <%= render "layouts/errors", :object => @ingredient %>
+</div>

@@ -1,21 +1,18 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all.sort_by { |ingredient| ingredient[:name] }
+    @ingredients = Ingredient.order("name")
+    @ingredient = Ingredient.new
     render :index
   end
 
-  def new
-    @ingredient = Ingredient.new
-    render :new
-  end
-
   def create
-    @recipe = Recipe.find(params[:recipe_id])
-    @ingredient = @recipe.ingredients.new(ingredient_params)
+    @ingredients = Ingredient.all
+    @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
-      @ingredient.recipes << @recipe
       flash[:notice] = "Ingredient added!"
-      redirect_to recipe_path(@recipe)
+      redirect_to ingredients_path
+    else
+      render :index
     end
   end
 

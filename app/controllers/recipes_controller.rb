@@ -1,6 +1,14 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all.sort_by { |recipe| recipe[:title] }
+    if params[:search]
+      @recipes = Recipe.where('title LIKE ?', "%#{params[:search]}%")
+    elsif params[:sort_rating]
+      @recipes = Recipe.order("rating DESC")
+    elsif params[:sort_alpha]
+      @recipes = Recipe.order("title")
+    else
+      @recipes = Recipe.order("title")
+    end
     render :index
   end
 
@@ -32,9 +40,14 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @ingredient = Ingredient.find(params[:recipe][:ingredient_ids])
     if @recipe.update(recipe_params)
-      @recipe.ingredients << @ingredient
+      if params[:recipe][:ingredient_ids]
+        @ingredient = Ingredient.find(params[:recipe][:ingredient_ids])
+        @recipe.ingredients << @ingredient
+      elsif params[:recipe][:tag_ids]
+        @tag = Tag.find(params[:recipe][:tag_ids])
+        @recipe.tags << @tag
+      end
       flash[:notice] = "Recipe updated!"
       redirect_to recipe_path
     else

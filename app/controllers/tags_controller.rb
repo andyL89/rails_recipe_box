@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   def index
     @tags = Tag.all
+    @tag = Tag.new
     render :index
   end
 

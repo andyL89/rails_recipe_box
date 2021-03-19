@@ -11,9 +11,11 @@
 
   <body>
     <div class="container">
-      <%= flash[:alert] %>
       <%= yield %>
-      <div class="notice"><%= flash[:notice] %></div>
+      <div class="notice">
+        <%= flash[:alert] %>
+        <%= flash[:notice] %>
+      </div>
     </div>
   </body>
 </html>

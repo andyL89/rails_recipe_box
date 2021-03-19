@@ -1,15 +1,31 @@
 <h1>Recipe Book</h1>
 
-<% if @recipes.any? %>
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <li><%= link_to recipe.title, recipe_path(recipe) %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Sorry, there are no recipes, yet.</p>
+<div class="form">
+  <%= form_tag recipes_path, method: :get do %>
+    <%= label_tag "Search for Recipe" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil, class: "submit" %>
+  <% end %>
+</div>
+<div class="list">
+  <% if @recipes.any? %>
+      <% @recipes.each do |recipe| %>
+        <p><%= link_to recipe.title, recipe_path(recipe) %></p>
+      <% end %>
+  <% else %>
+    <p>Sorry, there are no recipes, yet.</p>
+  <% end %>
+</div>
+
+<%= form_tag recipes_path, method: :get do %>
+  <%= submit_tag "Sort by Rating", name: :sort_rating, class: "submit" %>
+<% end %>
+
+<%= form_tag recipes_path, method: :get do %>
+  <%= submit_tag "Sort Alphabetically", name: :sort_alpha, class: "submit" %>
 <% end %>
 
 <p><%= link_to "Create a Recipe", new_recipe_path %></p>
 <p><%= link_to "Go to Full Ingredient List", ingredients_path %></p>
+<p><%= link_to "Go to Full Tag List", tags_path %></p>
 
