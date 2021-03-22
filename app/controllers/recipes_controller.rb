@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  # before_action :authorize, only: [:new, :edit, :destroy]
+
   def index
     if params[:search]
       @recipes = Recipe.search(params[:search])

@@ -16,3 +16,4 @@ Ingredient.destroy_all
     recipe.ingredients << ingredient
   end
 end
+
