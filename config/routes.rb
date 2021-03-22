@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'recipes#index'
+  root to: 'static_pages#home'
   resources :recipes do
     resources :ingredients, :tags
   end

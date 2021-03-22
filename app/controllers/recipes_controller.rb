@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   def index
     if params[:search]
-      @recipes = Recipe.where('title LIKE ?', "%#{params[:search]}%")
+      @recipes = Recipe.search(params[:search])
     elsif params[:sort_rating]
       @recipes = Recipe.order("rating DESC")
     elsif params[:sort_alpha]
